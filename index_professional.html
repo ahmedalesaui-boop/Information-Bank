@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>بنك المعلومات الشخصية | نظام الإدارة</title>
+<style>
+:root{--p:#075846;--p2:#0d755f;--gold:#d9aa32;--bg:#f3f6f5;--card:#fff;--text:#17211f;--muted:#71807c;--line:#e0e7e4;--danger:#b42318;--shadow:0 8px 28px #153b3412}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Tahoma,sans-serif}
+button,input,select,textarea{font:inherit}button{cursor:pointer}
+header{background:linear-gradient(135deg,#043f35,#0b715d);color:#fff;padding:20px 5%;box-shadow:0 4px 18px #0002}
+.head{max-width:1180px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:15px}.brand{display:flex;align-items:center;gap:13px}.logo{width:55px;height:55px;border:2px solid #e9c45a;border-radius:50%;display:grid;place-items:center;font-size:25px;background:#ffffff14}
+h1{margin:0;font-size:24px}.head p{margin:5px 0 0;color:#d8eeea;font-size:13px}.head button{background:#ffffff18;color:#fff;border:1px solid #ffffff44;border-radius:9px;padding:10px 14px}
+.wrap{max-width:1180px;margin:20px auto;padding:0 15px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:16px}.stat{background:var(--card);border-radius:14px;padding:17px;box-shadow:var(--shadow);border-right:4px solid var(--p)}.stat b{font-size:25px;display:block;color:var(--p)}.stat span{color:var(--muted);font-size:13px}
+.toolbar,.card{background:var(--card);border-radius:15px;box-shadow:var(--shadow);padding:17px;margin-bottom:15px}.toolbar{display:flex;gap:9px;flex-wrap:wrap}.search{flex:1;min-width:220px}
+input,select,textarea{width:100%;border:1px solid var(--line);border-radius:9px;padding:11px;background:#fff;color:var(--text);outline:none}input:focus,select:focus,textarea:focus{border-color:var(--p);box-shadow:0 0 0 3px #07584612}textarea{min-height:85px;resize:vertical}
+.btn{border:0;border-radius:9px;padding:11px 15px;font-weight:bold}.primary{background:var(--p);color:#fff}.gold{background:var(--gold);color:#17211f}.soft{background:#edf3f1;color:var(--p)}.danger{background:#fdecea;color:var(--danger)}
+.profile{display:grid;grid-template-columns:90px 1fr auto;gap:16px;align-items:center}.avatar{width:90px;height:90px;border-radius:50%;background:#e5f0ed;border:3px solid var(--gold);display:grid;place-items:center;font-size:40px}.profile h2{margin:0 0 5px;color:var(--p)}.profile p{margin:0;color:var(--muted)}
+.tabs{display:flex;gap:7px;overflow:auto;margin-bottom:14px}.tab{white-space:nowrap;background:#eaf0ee;color:var(--p);border:0;padding:10px 14px;border-radius:9px}.tab.active{background:var(--p);color:#fff}
+.section{display:none}.section.active{display:block}.title{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:15px}.title h2{margin:0;color:var(--p);font-size:19px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.field label{display:block;font-size:13px;margin-bottom:5px;color:#4f5d59}.wide{grid-column:1/-1}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:10px}.table{width:100%;border-collapse:collapse;min-width:700px}.table th,.table td{padding:11px;border-bottom:1px solid var(--line);text-align:right;font-size:13px}.table th{background:#f1f5f3;color:var(--p)}.table tr:last-child td{border-bottom:0}
+.empty{text-align:center;padding:25px;color:var(--muted)}.badge{display:inline-block;padding:5px 8px;border-radius:20px;background:#e8f4ef;color:var(--p);font-size:12px}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:18px}
+.toast{position:fixed;bottom:20px;right:20px;background:#173c34;color:#fff;padding:12px 16px;border-radius:10px;box-shadow:0 8px 25px #0003;display:none;z-index:10}
+.modal{position:fixed;inset:0;background:#0007;display:none;align-items:center;justify-content:center;padding:15px;z-index:20}.modal.show{display:flex}.modalbox{background:#fff;border-radius:15px;max-width:600px;width:100%;padding:20px}.modalhead{display:flex;justify-content:space-between;align-items:center}.close{background:#eee;border:0;border-radius:8px;padding:7px 10px}
+body.dark{--bg:#101816;--card:#17221f;--text:#e8efed;--muted:#a8b5b1;--line:#2d3a36}body.dark input,body.dark select,body.dark textarea{background:#111a18;color:#fff}body.dark .table th{background:#202c29}
+@media(max-width:700px){.head{align-items:flex-start}.stats{grid-template-columns:1fr 1fr}.profile{grid-template-columns:70px 1fr}.profile .actions{grid-column:1/-1}.avatar{width:70px;height:70px}.grid{grid-template-columns:1fr}.wide{grid-column:auto}.stats .stat:last-child{grid-column:1/-1}}
+@media print{header,.stats,.toolbar,.tabs,.actions,.no-print,footer{display:none!important}.card{box-shadow:none;border:1px solid #ddd}.section{display:block!important}.profile{border:1px solid #ddd}}
+</style>
+</head>
+<body>
+<header>
+<div class="head">
+<div class="brand"><div class="logo">م</div><div><h1>بنك المعلومات الشخصية</h1><p>نظام إدارة البيانات الشخصية والوظيفية</p></div></div>
+<button onclick="toggleDark()">☾ الوضع الليلي</button>
+</div>
+</header>
+
+<main class="wrap">
+<div class="stats">
+<div class="stat"><b id="statPeople">0</b><span>عدد الموظفين</span></div>
+<div class="stat"><b id="statBooks">0</b><span>الكتب الرسمية</span></div>
+<div class="stat"><b id="statDocs">0</b><span>الأوراق الثبوتية</span></div>
+</div>
+
+<div class="toolbar no-print">
+<input class="search" id="search" placeholder="🔎 ابحث بالاسم أو الرقم الوظيفي..." oninput="renderPeople()">
+<button class="btn primary" onclick="newPerson()">＋ موظف جديد</button>
+<button class="btn soft" onclick="backup()">نسخة احتياطية</button>
+<button class="btn soft" onclick="restoreInput.click()">استرجاع</button>
+<input id="restoreInput" type="file" accept=".json" style="display:none" onchange="restore(event)">
+</div>
+
+<div class="card profile">
+<div class="avatar">👤</div>
+<div><h2 id="pName">اسم الموظف</h2><p id="pInfo">العنوان الوظيفي — المدرسة / المديرية</p></div>
+<div class="actions no-print"><button class="btn gold" onclick="window.print()">🖨️ طباعة الملف</button></div>
+</div>
+
+<div class="card">
+<div class="tabs no-print">
+<button class="tab active" onclick="tab(this,'personal')">👤 الشخصية</button>
+<button class="tab" onclick="tab(this,'job')">💼 الوظيفة</button>
+<button class="tab" onclick="tab(this,'education')">🎓 التعليم</button>
+<button class="tab" onclick="tab(this,'docs')">📎 الثبوتيات</button>
+<button class="tab" onclick="tab(this,'books')">📚 الكتب الرسمية</button>
+<button class="tab" onclick="tab(this,'notes')">📝 الملاحظات</button>
+</div>
+
+<section id="personal" class="section active">
+<div class="title"><h2>المعلومات الشخصية</h2></div>
+<div class="grid">
+<div class="field"><label>الاسم الكامل</label><input id="name"></div><div class="field"><label>اسم الأم</label><input id="mother"></div>
+<div class="field"><label>تاريخ الميلاد</label><input id="birth" type="date"></div><div class="field"><label>مكان الولادة</label><input id="birthPlace"></div>
+<div class="field"><label>الجنس</label><select id="gender"><option>ذكر</option><option>أنثى</option></select></div><div class="field"><label>الحالة الاجتماعية</label><select id="marital"><option>أعزب</option><option>متزوج</option><option>مطلق</option><option>أرمل</option></select></div>
+<div class="field"><label>عدد الأطفال</label><input id="children" type="number" min="0"></div><div class="field"><label>رقم الهاتف</label><input id="phone" type="tel"></div>
+<div class="field"><label>البريد الإلكتروني</label><input id="email" type="email"></div>
+</div></section>
+
+<section id="job" class="section">
+<div class="title"><h2>المعلومات الوظيفية</h2></div>
+<div class="grid">
+<div class="field"><label>الرقم الوظيفي</label><input id="employee"></div><div class="field"><label>العنوان الوظيفي</label><input id="job"></div>
+<div class="field"><label>الدرجة</label><input id="grade"></div><div class="field"><label>المرحلة</label><input id="step"></div>
+<div class="field"><label>تاريخ التعيين</label><input id="appointment" type="date"></div><div class="field"><label>تاريخ المباشرة</label><input id="start" type="date"></div>
+<div class="field"><label>سنوات الخدمة</label><input id="service" type="number" min="0"></div><div class="field"><label>جهة الانتساب</label><input id="affiliation"></div>
+<div class="field"><label>المدرسة / الدائرة</label><input id="school"></div><div class="field"><label>المديرية</label><input id="directorate"></div>
+<div class="field"><label>القسم</label><input id="department"></div><div class="field"><label>الشعبة</label><input id="section"></div>
+<div class="field"><label>المحافظة</label><input id="province"></div><div class="field"><label>القضاء / الناحية</label><input id="district"></div>
+<div class="field"><label>آخر علاوة</label><input id="lastRaise"></div><div class="field"><label>تاريخ آخر علاوة</label><input id="raiseDate" type="date"></div>
+<div class="field"><label>آخر ترفيع</label><input id="promotion"></div><div class="field"><label>تاريخ الاستحقاق القادم</label><input id="nextDate" type="date"></div>
+</div></section>
+
+<section id="education" class="section">
+<div class="title"><h2>المؤهلات والدورات</h2></div>
+<div class="grid">
+<div class="field"><label>الشهادة</label><select id="educationLevel"><option>دبلوم</option><option>بكالوريوس</option><option>دبلوم عالي</option><option>ماجستير</option><option>دكتوراه</option></select></div>
+<div class="field"><label>الاختصاص</label><input id="specialty"></div><div class="field"><label>الجامعة / المعهد</label><input id="university"></div><div class="field"><label>سنة التخرج</label><input id="graduation" type="number"></div>
+<div class="field"><label>اسم آخر دورة</label><input id="course"></div><div class="field"><label>جهة الدورة</label><input id="courseOrg"></div><div class="field"><label>تاريخ الدورة</label><input id="courseDate" type="date"></div><div class="field"><label>مدة الدورة</label><input id="courseDuration"></div>
+</div></section>
+
+<section id="docs" class="section">
+<div class="title"><h2>الأوراق الثبوتية</h2><button class="btn primary no-print" onclick="openModal('docModal')">＋ إضافة وثيقة</button></div>
+<div class="table-wrap"><table class="table"><thead><tr><th>النوع</th><th>الرقم</th><th>الإصدار</th><th>الانتهاء</th><th>جهة الإصدار</th><th></th></tr></thead><tbody id="docsTable"></tbody></table></div>
+</section>
+
+<section id="books" class="section">
+<div class="title"><h2>الكتب الرسمية</h2><button class="btn primary no-print" onclick="openModal('bookModal')">＋ إضافة كتاب رسمي</button></div>
+<div class="table-wrap"><table class="table"><thead><tr><th>النوع</th><th>الرقم</th><th>التاريخ</th><th>الموضوع</th><th>من</th><th>إلى</th><th>مرفق</th><th></th></tr></thead><tbody id="booksTable"></tbody></table></div>
+</section>
+
+<section id="notes" class="section">
+<div class="title"><h2>العنوان والملاحظات</h2></div>
+<div class="grid">
+<div class="field wide"><label>العنوان الكامل</label><textarea id="address"></textarea></div>
+<div class="field wide"><label>ملاحظات إدارية</label><textarea id="notes"></textarea></div>
+</div>
+</section>
+
+<div class="actions no-print">
+<button class="btn primary" onclick="save()">💾 حفظ البيانات</button><button class="btn soft" onclick="newPerson()">موظف جديد</button><button class="btn gold" onclick="window.print()">🖨️ طباعة</button><button class="btn danger" onclick="deletePerson()">حذف الموظف</button>
+</div>
+</div>
+
+<div class="card no-print"><div class="title"><h2>قائمة الموظفين</h2></div><div id="peopleList"></div></div>
+</main>
+
+<footer>بنك المعلومات الشخصية © 2026 — يعمل محليًا على جهازك</footer>
+<div id="toast" class="toast"></div>
+
+<div id="docModal" class="modal"><div class="modalbox">
+<div class="modalhead"><h2>إضافة ورقة ثبوتية</h2><button class="close" onclick="closeModal('docModal')">✕</button></div>
+<div class="grid">
+<div class="field"><label>نوع الوثيقة</label><select id="docType"><option>البطاقة الوطنية</option><option>بطاقة السكن</option><option>هوية الأحوال المدنية</option><option>شهادة الجنسية</option><option>جواز السفر</option><option>هوية الموظف</option><option>أخرى</option></select></div>
+<div class="field"><label>رقم الوثيقة</label><input id="docNo"></div><div class="field"><label>تاريخ الإصدار</label><input id="docDate" type="date"></div><div class="field"><label>تاريخ الانتهاء</label><input id="docExpiry" type="date"></div><div class="field"><label>جهة الإصدار</label><input id="docFrom"></div>
+</div><div class="actions"><button class="btn primary" onclick="addDoc()">إضافة</button><button class="btn soft" onclick="closeModal('docModal')">إلغاء</button></div>
+</div></div>
+
+<div id="bookModal" class="modal"><div class="modalbox">
+<div class="modalhead"><h2>إضافة كتاب رسمي</h2><button class="close" onclick="closeModal('bookModal')">✕</button></div>
+<div class="grid">
+<div class="field"><label>نوع الكتاب</label><select id="bookType"><option>كتاب رسمي</option><option>أمر إداري</option><option>أمر وزاري</option><option>تأييد</option><option>تنسيب</option><option>نقل</option><option>ترفيع</option><option>علاوة</option><option>أخرى</option></select></div>
+<div class="field"><label>رقم الكتاب</label><input id="bookNo"></div><div class="field"><label>تاريخ الكتاب</label><input id="bookDate" type="date"></div><div class="field"><label>جهة الإصدار</label><input id="bookFrom"></div><div class="field"><label>موجه إلى</label><input id="bookTo"></div><div class="field"><label>الموضوع</label><input id="bookSubject"></div><div class="field wide"><label>إرفاق صورة / PDF</label><input id="bookFile" type="file" accept="image/*,.pdf"></div>
+</div><div class="actions"><button class="btn primary" onclick="addBook()">إضافة</button><button class="btn soft" onclick="closeModal('bookModal')">إلغاء</button></div>
+</div></div>
+
+<script>
+const F=["name","mother","birth","birthPlace","gender","marital","children","phone","email","employee","job","grade","step","appointment","start","service","affiliation","school","directorate","department","section","province","district","lastRaise","raiseDate","promotion","nextDate","educationLevel","specialty","university","graduation","course","courseOrg","courseDate","courseDuration","address","notes"];
+let people=[],current=-1,docs=[],books=[];
+const $=id=>document.getElementById(id);
+
+function load(){try{people=JSON.parse(localStorage.getItem("pro_people")||"[]")}catch(e){people=[]}renderPeople();updateStats()}
+function save(){let p=read();if(!p.name.trim()){toast("اكتب اسم الموظف أولاً");return}p.docs=docs;p.books=books;if(current<0){people.push(p);current=people.length-1}else people[current]=p;localStorage.setItem("pro_people",JSON.stringify(people));renderPeople();updateStats();preview();toast("تم حفظ الملف بنجاح")}
+function read(){let o={};F.forEach(x=>o[x]=$(x).value);return o}
+function fill(p){F.forEach(x=>$(x).value=p?.[x]||"");docs=p?.docs||[];books=p?.books||[];preview();renderDocs();renderBooks()}
+function newPerson(){current=-1;fill({});toast("تم فتح ملف جديد");window.scrollTo(0,0)}
+function openPerson(i){current=i;fill(people[i]);toast("تم فتح ملف الموظف");window.scrollTo(0,0)}
+function deletePerson(){if(current<0){toast("حدد موظفاً أولاً");return}if(!confirm("حذف ملف الموظف؟"))return;people.splice(current,1);localStorage.setItem("pro_people",JSON.stringify(people));newPerson();renderPeople();updateStats();toast("تم الحذف")}
+function preview(){$("pName").textContent=$("name").value||"اسم الموظف";$("pInfo").textContent=($("job").value||"العنوان الوظيفي")+" — "+($("school").value||"المدرسة / المديرية")}
+function renderPeople(){let q=($("search").value||"").toLowerCase(),a=people.map((p,i)=>({p,i})).filter(x=>(x.p.name+" "+x.p.employee).toLowerCase().includes(q)),b=$("peopleList");if(!a.length){b.innerHTML='<div class="empty">لا توجد ملفات موظفين</div>';return}b.innerHTML='<div class="table-wrap"><table class="table"><thead><tr><th>الاسم</th><th>الرقم الوظيفي</th><th>الوظيفة</th><th>المدرسة</th><th></th></tr></thead><tbody>'+a.map(x=>'<tr><td>'+esc(x.p.name)+'</td><td>'+esc(x.p.employee)+'</td><td>'+esc(x.p.job)+'</td><td>'+esc(x.p.school)+'</td><td><button class="btn soft" onclick="openPerson('+x.i+')">فتح</button></td></tr>').join("")+'</tbody></table></div>'}
+function addDoc(){if(!$("docNo").value){toast("أدخل رقم الوثيقة");return}docs.push({type:$("docType").value,no:$("docNo").value,date:$("docDate").value,expiry:$("docExpiry").value,from:$("docFrom").value});renderDocs();closeModal("docModal");clearIds(["docNo","docDate","docExpiry","docFrom"]);toast("تمت إضافة الوثيقة")}
+function renderDocs(){let t=$("docsTable");if(!docs.length){t.innerHTML='<tr><td colspan="6" class="empty">لا توجد أوراق ثبوتية</td></tr>';return}t.innerHTML=docs.map((d,i)=>'<tr><td><span class="badge">'+esc(d.type)+'</span></td><td>'+esc(d.no)+'</td><td>'+esc(d.date)+'</td><td>'+esc(d.expiry)+'</td><td>'+esc(d.from)+'</td><td><button class="btn danger" onclick="removeDoc('+i+')">حذف</button></td></tr>').join("")}
+function removeDoc(i){docs.splice(i,1);renderDocs();toast("تم حذف الوثيقة")}
+function addBook(){let f=$("bookFile").files[0];if(!$("bookNo").value&&!$("bookSubject").value){toast("أدخل رقم الكتاب أو موضوعه");return}books.push({type:$("bookType").value,no:$("bookNo").value,date:$("bookDate").value,from:$("bookFrom").value,to:$("bookTo").value,subject:$("bookSubject").value,file:f?f.name:""});renderBooks();closeModal("bookModal");clearIds(["bookNo","bookDate","bookFrom","bookTo","bookSubject"]);$("bookFile").value="";toast("تمت إضافة الكتاب الرسمي")}
+function renderBooks(){let t=$("booksTable");if(!books.length){t.innerHTML='<tr><td colspan="8" class="empty">لا توجد كتب رسمية</td></tr>';return}t.innerHTML=books.map((b,i)=>'<tr><td><span class="badge">'+esc(b.type)+'</span></td><td>'+esc(b.no)+'</td><td>'+esc(b.date)+'</td><td>'+esc(b.subject)+'</td><td>'+esc(b.from)+'</td><td>'+esc(b.to)+'</td><td>'+esc(b.file||"—")+'</td><td><button class="btn danger" onclick="removeBook('+i+')">حذف</button></td></tr>').join("")}
+function removeBook(i){books.splice(i,1);renderBooks();toast("تم حذف الكتاب")}
+function clearIds(a){a.forEach(x=>$(x).value="")}
+function tab(btn,id){document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));document.querySelectorAll(".section").forEach(x=>x.classList.remove("active"));btn.classList.add("active");$(id).classList.add("active")}
+function openModal(id){$(id).classList.add("show")}function closeModal(id){$(id).classList.remove("show")}
+function updateStats(){$("statPeople").textContent=people.length;$("statBooks").textContent=people.reduce((n,p)=>n+(p.books||[]).length,0);$("statDocs").textContent=people.reduce((n,p)=>n+(p.docs||[]).length,0)}
+function backup(){let blob=new Blob([JSON.stringify(people,null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="بنك_المعلومات_الاحتياطي.json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500);toast("تم إنشاء النسخة الاحتياطية")}
+function restore(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{people=JSON.parse(r.result);localStorage.setItem("pro_people",JSON.stringify(people));renderPeople();updateStats();toast("تم استرجاع البيانات")}catch(x){toast("ملف النسخة الاحتياطية غير صالح")}};r.readAsText(f)}
+function toggleDark(){document.body.classList.toggle("dark");localStorage.setItem("pro_dark",document.body.classList.contains("dark"))}
+function toast(t){let x=$("toast");x.textContent=t;x.style.display="block";setTimeout(()=>x.style.display="none",2200)}
+function esc(s){return String(s||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+F.forEach(x=>$(x).addEventListener("input",preview));
+if(localStorage.getItem("pro_dark")==="true")document.body.classList.add("dark");
+load();
+</script>
+</body>
+</html>
