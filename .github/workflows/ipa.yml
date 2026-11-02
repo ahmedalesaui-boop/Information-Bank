@@ -13,14 +13,14 @@ jobs:
           mkdir www
           cp "$(ls *.html | head -n1)" www/index.html
           npm init -y
-          npm i @capacitor/core @capacitor/cli @capacitor/ios
+          npm i @capacitor/core@6 @capacitor/cli@6 @capacitor/ios@6
           npx cap init InfoBank com.example.infobank --web-dir www
           npx cap add ios
           npx cap sync ios
       - name: Build unsigned IPA
         run: |
           cd ios/App
-          xcodebuild -project App.xcodeproj -scheme App -configuration Release \
+          xcodebuild -workspace App.xcworkspace -scheme App -configuration Release \
             -sdk iphoneos -derivedDataPath build \
             CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=""
           mkdir Payload
